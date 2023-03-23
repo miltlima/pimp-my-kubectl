@@ -21,7 +21,7 @@ To run this script, perform the following steps:
 ```bash
 chmod +x pimp-my-kubectl.sh
 ```
-3. Type `./script.sh` and hit Enter.
+3. Type `./pimp-my-kubectl.sh` and hit Enter.
 
 The script will download and install `kubectl`, `kubectx`, and `krew`. It will also install krew plugins such as `community-images`, `blame`, `tree`, `count`, `deprecations`, `datree`, `colorize-applied`, and `explore`.
 
