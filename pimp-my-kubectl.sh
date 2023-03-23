@@ -6,22 +6,14 @@ OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 VERSION=$(curl - Ls https://dl.k8s.io/release/stable.txt)
 ARCH=$(uname -m)
 
-# Check os architecture
-get_os_arch(){
-    case "$ARCH" in
-        "x86_64") echo "amd64" ;;
-        "arm64") echo "arm64" ;;
-        *) echo "Unsupported architecture: $ARCH"; exit 1 ;;
-    esac
-}
-## Install Kubectl
+# Install Kubectl
 case "$OS" in
     linux) curl -LO https://dl.k8s.io/release/$VERSION/bin/linux/$ARCH/kubectl ;;
     darwin) curl -LO https://dl.k8s.io/release/$VERSION/bin/darwin/$ARCH/kubectl ;;
     *) echo "Unsupported OS: $OS"; exit 1 ;;
 esac
 
-## Install kubectx 
+# Install kubectx 
 if [ "$OS" == "linux" ]; then
     curl -LO https://github.com/ahmetb/kubectx/releases/download/v0.9.1/kubectx_$KUBECTX_VERSION_linux_x86_64.tar.gz
     tar -zxvf kubectx_$KUBECTX_VERSION_linux_x86_64.tar.gz
@@ -35,7 +27,7 @@ else
     echo "Unsupported OS: $OS"
 fi
 
-## Install Krew 
+# Install Krew 
 (
   set -x; cd "$(mktemp -d)" &&
   OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
